@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/MovimientoRotatorio.unity
+- path: Assets/MomentumVR/Scenes/ArmAgility.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
