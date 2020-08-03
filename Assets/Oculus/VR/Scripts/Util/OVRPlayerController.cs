@@ -516,6 +516,13 @@ public class OVRPlayerController : MonoBehaviour
 		return true;
 	}
 
+	public bool JumpModified()
+	{
+		MoveThrottle += new Vector3(0, transform.lossyScale.y * JumpForce, 0);
+
+		return true;
+	}
+
 	/// <summary>
 	/// Stop this instance.
 	/// </summary>
