@@ -24,14 +24,14 @@ public class GameManager : MonoBehaviour
     private TextMesh textMeshAmplitude;
     [SerializeField]
     private OVRPlayerController controlador;
-
+    private string pathToWrite;
     private float time;
+    public int points;
     private float highPos, lowPos;
     private float lastValueRight, lastValueLeft;
     private float nextActionTime = 0.0f;
     public float period = 0.05f;
     private string fileName,myFilePath, tipoAmplitud, tipoVelocidad,respuesta;
-    private string texto;
     private string[] lineas;
     public static GameManager GetInstance()
     {
@@ -51,23 +51,21 @@ public class GameManager : MonoBehaviour
         lastValueRight = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch)[1];
         lastValueLeft = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch)[1];
         fileName = "ejercicios.txt";
-        myFilePath = "/sdcard/Download/" + fileName;
-        
-        string pathToWrite = "/sdcard/Download/" + "resultados.txt";
+        myFilePath = "/sdcard/Download/" + fileName; 
+        //myFilePath = Application.dataPath + fileName;  //oculus link
+        points = 0;
+
+        pathToWrite = "/sdcard/Download/" + "resultados.txt";
+        //pathToWrite = Application.dataPath + "resultados.txt"; //oculus link
 
         if (!File.Exists(pathToWrite))
         {
-            //File.WriteAllText(pathToWrite, "--RESULTADOS--\n\n");
-            textMeshPosition.text = tipoVelocidad + " / " + respuesta + "/" + tipoAmplitud + "/" + File.Exists(myFilePath);
+            File.WriteAllText(pathToWrite, "--RESULTADOS--\n\n");
         }
-
-
 
         if (File.Exists(myFilePath))
         {
-            //texto = File.ReadAllText(myFilePath);
-            textMeshPosition.text = tipoVelocidad + " / " + respuesta + "/" + tipoAmplitud + "/" + File.Exists(myFilePath);
-
+            lineas = File.ReadAllLines(myFilePath);
         }
 
         if (lineas!=null)
@@ -106,16 +104,16 @@ public class GameManager : MonoBehaviour
             }
             
         }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        tipoAmplitud = "MEDIA";
         time = Time.realtimeSinceStartup - timeZero;
-        textMesh.text = "Time: " + (int)((Time.realtimeSinceStartup - timeZero));
-        textMeshVelocity.text = "Velocity : " + Mathf.Abs(OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RHand)[1]);
-        //textMeshVelocity.text = "Texto : " + texto;
+        //textMesh.text = "Time: " + (int)((Time.realtimeSinceStartup - timeZero));
+        //textMeshVelocity.text = "Velocity : " + Mathf.Abs(OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RHand)[1]);
+        textMeshVelocity.text = "Points : " + points;
         //textMeshPosition.text = "Posicion : " + controlador.transform.position.x + "," + controlador.transform.position.y + "," + controlador.transform.position.z;
         textMeshPosition.text = tipoVelocidad + " / " + respuesta + "/" + tipoAmplitud + "/" + File.Exists(myFilePath);
 
@@ -126,11 +124,11 @@ public class GameManager : MonoBehaviour
         float amplitudeFrameLeft = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch)[1] - lastValueLeft;
         lastValueLeft = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch)[1];
 
-        controlador.JumpForce = ((Mathf.Abs(amplitudeFrameRight) + Mathf.Abs(amplitudeFrameLeft))/2);
+        controlador.JumpForce = ((Mathf.Abs(amplitudeFrameRight) + Mathf.Abs(amplitudeFrameLeft))/4);
         //controlador.JumpForce = Mathf.Abs(amplitudeFrameRight);
         controlador.JumpModified();
 
-        textMeshAmplitude.text = "Amplitud : " + amplitudeFrameRight;
+        textMeshAmplitude.text = "Amplitud : " + amplitudeFrameRight + "Highpos: " + highPos + " Lowpos: " + lowPos;
 
 
         if (OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch)[1] > highPos)
@@ -148,14 +146,49 @@ public class GameManager : MonoBehaviour
         //position = controlador.transform.position;
         controlador.JumpForce = deltaTime;
         controlador.JumpModified();
-       
+
+        switch (tipoVelocidad)
+        {
+            case "BAJA":
+                if ((Time.realtimeSinceStartup - timeZero) > 180)
+                {
+                    File.WriteAllText(pathToWrite, "Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString() + " // Points : " + points);
+                    //Application.Quit();
+                }
+                textMesh.text = "Tiempo restante: " + (int)(180 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
+                break;
+            case "MEDIA":
+                if ((Time.realtimeSinceStartup - timeZero) > 120)
+                {
+                    File.WriteAllText(pathToWrite, "Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString() + " // Points : " + points);
+                    //Application.Quit();
+                }
+                textMesh.text = "Tiempo restante: " + (int)(120 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
+                break;
+            case "ALTA":
+                if ((Time.realtimeSinceStartup - timeZero) > 60)
+                {
+                    File.WriteAllText(pathToWrite, "Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString() + " // Points : " + points);
+                    //Application.Quit();
+                }
+                textMesh.text = "Tiempo restante: " + (int)(60 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
+                break;
+            default:
+                if ((Time.realtimeSinceStartup - timeZero) > 60)
+                {
+                    File.WriteAllText(pathToWrite, "Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString() + " // Points : " + points);
+                    //Application.Quit();
+                }
+                textMesh.text = "Tiempo restante: " + (int)(60 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
+                break;
+        }
         //position[2] *= Mathf.Abs(OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RHand)[1]) * -0.05f;
         //controlador.transform.position = position;
     }
 
     public void WriteToFile()
     {
-        string pathToWrite = Application.dataPath + "/resultadosConTime.txt";
+        string pathToWrite = Application.persistentDataPath + "/resultadosConTime.txt";
 
         if (!File.Exists(pathToWrite))
         {
