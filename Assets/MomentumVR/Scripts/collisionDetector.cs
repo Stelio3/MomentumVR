@@ -5,12 +5,14 @@ using UnityEngine;
 public class collisionDetector : MonoBehaviour
 {
     // Update is called once per frame
+
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(this.gameObject);
     }
     private void OnTriggerEnter(Collider other)
     {
+        GameManager.GetInstance().points += 10;
         Destroy(this.gameObject);
     }
 }

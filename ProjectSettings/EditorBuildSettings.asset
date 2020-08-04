@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/MomentumVR/Scenes/SampleScene.unity
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/MomentumVR/Scenes/MovimientoRotatorio.unity
+  - enabled: 0
+    path: Assets/Scenes/MovimientoRotatorio.unity
     guid: 0ce2e0290f4c90946a253a1147134aa0
+  - enabled: 1
+    path: Assets/Scenes/MovimientoVertical.unity
+    guid: dc6b859d700432d42a55bd5a97d5167d
   m_configObjects: {}
