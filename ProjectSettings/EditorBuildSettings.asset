@@ -5,13 +5,17 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/MomentumVR/Games/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/MomentumVR/Games/Scenes/MovimientoRotatorio.unity
-    guid: 0ce2e0290f4c90946a253a1147134aa0
   - enabled: 1
-    path: Assets/MomentumVR/Games/Scenes/MovimientoVertical.unity
-    guid: dc6b859d700432d42a55bd5a97d5167d
-  m_configObjects: {}
+    path: Assets/MomentumVR/Games/Scenes/IslandScene1.unity
+    guid: 34192cf15650ac845b4053daa1ed7c53
+  - enabled: 1
+    path: Assets/MomentumVR/Games/Scenes/IslandScene.unity
+    guid: a7805e7cc9716422fb386fb26629fed9
+  - enabled: 1
+    path: Assets/MomentumVR/Games/Scenes/Mountain.unity
+    guid: 4ebcde32d2c6b4a168cffa76b1ed9f1f
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 07bbbe5cd1caacc4bbf57b8159dd3d29,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7924a351a3d1c9243a1d99abe2a753f6,
+      type: 2}
