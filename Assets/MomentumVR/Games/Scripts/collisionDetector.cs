@@ -12,6 +12,7 @@ public class collisionDetector : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        ScreenManager.Instance.points += 10;
         GameManager.GetInstance().points += 10;
         Destroy(this.gameObject);
     }
