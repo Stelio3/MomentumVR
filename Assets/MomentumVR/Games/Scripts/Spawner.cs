@@ -7,8 +7,8 @@ public class Spawner : MonoBehaviour
     public float timeSpawn;
     [SerializeField]
     Transform[] spawnPositions;
-    [SerializeField]
-    GameObject[] spawnObjects;
+
+    public GameObject[] spawnObjects;
 
     Coroutine rutina;
     private void OnEnable()
