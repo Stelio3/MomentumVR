@@ -17,3 +17,4 @@ public class collisionDetector : MonoBehaviour
         Destroy(this.gameObject);
     }
 }
+ 
