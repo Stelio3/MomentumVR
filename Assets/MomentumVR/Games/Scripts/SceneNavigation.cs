@@ -11,7 +11,10 @@ public class SceneNavigation : MonoBehaviour
     public GameObject[] popUps;
     public Button botonVuelo;
     public Button botonCuerda;
-    private string fileName, myFilePath, pathToWrite, respuestaVuelo, respuestaCuerda;
+    public Button botonViento;
+    public Button botonEstanterias;
+    private string fileName, myFilePath, pathToWrite;
+    private string respuestaVuelo, respuestaCuerda, respuestaViento, respuestaEstanterias;
     private string[] lineas;
 
     private void Awake()
@@ -52,6 +55,16 @@ public class SceneNavigation : MonoBehaviour
                     string[] parametros = words[1].Split('/');
                     respuestaVuelo = parametros[0];
                 }
+                else if (words[0] == "VIENTO")
+                {
+                    string[] parametros = words[1].Split('/');
+                    respuestaViento = parametros[0];
+                }
+                else if (words[0] == "ESTANTERIAS")
+                {
+                    string[] parametros = words[1].Split('/');
+                    respuestaEstanterias = parametros[0];
+                }
 
                 if (respuestaVuelo == "SI")
                 {
@@ -60,6 +73,14 @@ public class SceneNavigation : MonoBehaviour
                 if (respuestaCuerda == "SI")
                 {
                     botonCuerda.gameObject.SetActive(true);
+                }
+                if (respuestaViento == "SI")
+                {
+                    botonViento.gameObject.SetActive(true);
+                }
+                if (respuestaEstanterias == "SI")
+                {
+                    botonEstanterias.gameObject.SetActive(true);
                 }
             }
         }
@@ -87,25 +108,18 @@ public class SceneNavigation : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void ChangeScene(int s)
+    public void ChangeScene(string s)
     {
         Time.timeScale = 1;
         Debug.Log("Cambio a la escena: " + s);
-        if (s == 2)
-        {
-            StartCoroutine(LoadingScene(s));
-        }
-        else
-        {
-            StartCoroutine(CambioEscena(s));
-        }
+        StartCoroutine(CambioEscena(s));
     }
-    IEnumerator CambioEscena(int escena)
+    IEnumerator CambioEscena(string escena)
     {
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(escena);
     }
-    IEnumerator LoadingScene(int escena)
+    /*IEnumerator LoadingScene(string escena)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(escena);
         popUps[0].SetActive(true);
@@ -114,5 +128,5 @@ public class SceneNavigation : MonoBehaviour
             Debug.Log(asyncLoad.progress);
             yield return null;
         }
-    }
+    }*/
 }
