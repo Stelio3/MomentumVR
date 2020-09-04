@@ -11,8 +11,8 @@ public class PadelGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rBody.AddForce(transform.forward * ballForce);
         rBody = GetComponent<Rigidbody>();
+        rBody.AddForce(transform.forward * ballForce);
     }
 
 
