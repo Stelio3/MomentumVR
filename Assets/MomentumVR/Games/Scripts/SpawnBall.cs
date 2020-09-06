@@ -5,28 +5,23 @@ using UnityEngine;
 public class SpawnBall : MonoBehaviour
 {
     public GameObject myZone;
-
-    private GameObject newBall;
     private bool colisioned = false;
+
+    private void Start()
+    {
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (!colisioned && other.gameObject == myZone)
+        if (!colisioned && other.gameObject.tag == myZone.tag)
         {
-            newBall = gameObject;
             colisioned = true;
+            CrossedArms.Instance.Spanw(gameObject, myZone);
+            ScreenManager.Instance.points += 1;
             Destroy(gameObject);
             Destroy(other.gameObject);
-            CrossedArms.Instance.Spanw(newBall, myZone);
-            ScreenManager.Instance.points += 1;
+            
         }
-        else if (!colisioned)
-        {
-            ScreenManager.Instance.points -= 1;
-            colisioned = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        colisioned = false;
     }
 }
