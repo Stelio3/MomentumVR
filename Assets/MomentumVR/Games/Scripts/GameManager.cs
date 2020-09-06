@@ -150,34 +150,38 @@ public class GameManager : MonoBehaviour
         switch (tipoVelocidad)
         {
             case "BAJA":
-                if ((Time.realtimeSinceStartup - timeZero) > 180)
+                if ((Time.realtimeSinceStartup - timeZero) > 240)
                 {
                     File.WriteAllText(pathToWrite, "Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString() + " // Points : " + points);
                     //Application.Quit();
+                    SceneManager.LoadScene("GameMenu");
                 }
                 textMesh.text = "Tiempo restante: " + (int)(180 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
                 break;
             case "MEDIA":
-                if ((Time.realtimeSinceStartup - timeZero) > 120)
+                if ((Time.realtimeSinceStartup - timeZero) > 180)
                 {
                     File.WriteAllText(pathToWrite, "Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString() + " // Points : " + points);
                     //Application.Quit();
+                    SceneManager.LoadScene("GameMenu");
                 }
                 textMesh.text = "Tiempo restante: " + (int)(120 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
                 break;
             case "ALTA":
-                if ((Time.realtimeSinceStartup - timeZero) > 60)
+                if ((Time.realtimeSinceStartup - timeZero) > 120)
                 {
                     File.WriteAllText(pathToWrite, "Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString() + " // Points : " + points);
                     //Application.Quit();
+                    SceneManager.LoadScene("GameMenu");
                 }
                 textMesh.text = "Tiempo restante: " + (int)(60 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
                 break;
             default:
-                if ((Time.realtimeSinceStartup - timeZero) > 60)
+                if ((Time.realtimeSinceStartup - timeZero) > 180)
                 {
                     File.WriteAllText(pathToWrite, "Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString() + " // Points : " + points);
                     //Application.Quit();
+                    SceneManager.LoadScene("GameMenu");
                 }
                 textMesh.text = "Tiempo restante: " + (int)(60 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
                 break;
