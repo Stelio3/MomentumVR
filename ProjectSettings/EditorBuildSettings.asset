@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MomentumVR/Games/Scenes/MovimientoRotatorio.unity
     guid: 0ce2e0290f4c90946a253a1147134aa0
+  - enabled: 1
+    path: Assets/MomentumVR/Games/Scenes/Mountain.unity
+    guid: 4ebcde32d2c6b4a168cffa76b1ed9f1f
   m_configObjects: {}

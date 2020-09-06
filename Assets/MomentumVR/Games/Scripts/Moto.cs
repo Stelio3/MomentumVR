@@ -2,22 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Moto : MonoBehaviour
+public class Moto : Singleton<Moto>
 {
-    private Vector3 direction, velocity;
     private float leftRotation, rightRotation;
 
-    public GameObject leftHand, rightHand, eje;
-    
+    public static bool leftGrab, rightGrab;
+    public GameObject leftHand, rightHand;
     [SerializeField]
     float moveSpeed;
     // Update is called once per frame
     void Update()
     {
-        leftRotation = leftHand.transform.rotation.x;
-        rightRotation = rightHand.transform.rotation.x;
-        moveSpeed += leftRotation*0.1f + rightRotation * 0.1f;
+        if (rightGrab || leftGrab || Input.GetKey("a") || Input.GetKey("d"))
+        {
+            if ((rightGrab && !leftGrab) ||(Input.GetKey("a") && !Input.GetKey("d")))
+            {
+                transform.Rotate(0, 30f * Time.deltaTime, 0, Space.Self);
+            }
+            else if ((!rightGrab && leftGrab) || (!Input.GetKey("a") && Input.GetKey("d")))
+            {
+                transform.Rotate(0, -30f * Time.deltaTime, 0, Space.Self);
+            }
+            leftRotation = leftHand.transform.localRotation.x;
+            rightRotation = rightHand.transform.localRotation.x;
 
-        transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
+            moveSpeed += leftRotation * 0.1f + rightRotation * 0.1f;
+
+            transform.localPosition += -transform.right * moveSpeed * Time.deltaTime;
+            Debug.Log("LeftRotation: " + leftRotation + " RightRotation: " + rightRotation);
+        }
+    }
+    public void Grab(GameObject go, bool value)
+    {
+        if (go.tag == "Right")
+        {
+            rightGrab = value;
+        }
+        else if (go.tag == "Left")
+        {
+            leftGrab = value;
+        }
     }
 }
