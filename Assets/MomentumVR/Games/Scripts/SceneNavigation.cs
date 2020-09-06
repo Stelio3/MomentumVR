@@ -69,6 +69,7 @@ public class SceneNavigation : MonoBehaviour
                 if (respuestaVuelo == "SI")
                 {
                     botonVuelo.gameObject.SetActive(true);
+                    
                 }
                 if (respuestaCuerda == "SI")
                 {
