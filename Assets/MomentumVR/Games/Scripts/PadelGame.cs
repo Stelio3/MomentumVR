@@ -4,24 +4,38 @@ using UnityEngine;
 
 public class PadelGame : MonoBehaviour
 {
-    private Rigidbody rBody;
+    public float velInicial = 30f;
     public GameObject rHand, lHand;
-    public float ballForce;
+    public Rigidbody rBody;
+    Vector3 posInicial;
+
+    bool jugando;
 
     // Start is called before the first frame update
     void Start()
     {
-        rBody = GetComponent<Rigidbody>();
-        rBody.AddForce(transform.forward * ballForce);
+        posInicial = transform.position;
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    public void Reset()
     {
-        if (other.gameObject == rHand || other.gameObject == lHand)
+        transform.position = posInicial;
+        jugando = false;
+        DetenerMov();
+    }
+
+    public void DetenerMov()
+    {
+        rBody.velocity = Vector3.zero;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!jugando && rHand)
         {
-            rBody.AddForce(transform.forward * ballForce);
-            
+            jugando = true;
+            rBody.AddForce(new Vector3(velInicial, velInicial, velInicial));
         }
     }
 }
