@@ -627,6 +627,63 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 644003345}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &644003348 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 710257973, guid: ce816f2e6abb0504092c23ed9b970dfd,
+    type: 3}
+  m_PrefabInstance: {fileID: 644003345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &644003349
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644003348}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.10101667, y: 0.08375891, z: 0.18139648}
+  m_Center: {x: -0.030720206, y: 0.035528608, z: -0.0117845535}
+--- !u!1 &644003350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1145497138, guid: ce816f2e6abb0504092c23ed9b970dfd,
+    type: 3}
+  m_PrefabInstance: {fileID: 644003345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &644003351
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644003350}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.11349975, y: 0.10274914, z: 0.1999979}
+  m_Center: {x: 0.023280269, y: 0.024126895, z: -0.0141682625}
+--- !u!1 &644003352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd,
+    type: 3}
+  m_PrefabInstance: {fileID: 644003345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &644003353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644003352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6abc4910d1321e41bc3e94247042609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimTarget: {fileID: 463812090}
 --- !u!1 &1112938429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,6 +1946,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074199615011615642, guid: ca3901617ded4854a92add6f31437374,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6074199615011615646, guid: ca3901617ded4854a92add6f31437374,
         type: 3}
