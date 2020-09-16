@@ -755,7 +755,9 @@ MonoBehaviour:
   - {fileID: 1429923014}
   - {fileID: 390610322}
   spawnObjects:
-  - {fileID: 5961329919928026513, guid: d76ce512657710e4cb80d0d585a10eb0, type: 3}
+  - {fileID: 1637319330630942, guid: 7b047d6be874343ed89b39217d759622, type: 3}
+  - {fileID: 1178179015817066, guid: 2942a9241566d9f49916c618e9dc95a7, type: 3}
+  - {fileID: 1878976330372524, guid: 2b90d0c38e99d41acaa02470d023066d, type: 3}
 --- !u!1 &1367146130
 GameObject:
   m_ObjectHideFlags: 0
