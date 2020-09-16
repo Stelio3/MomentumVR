@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
     public int points;
     private float highPos, lowPos;
     private float lastValueRight, lastValueLeft;
-    private float nextActionTime = 0.0f;
     public float period = 0.05f;
     private string fileName,myFilePath, tipoAmplitud, tipoVelocidad,respuesta;
     private string[] lineas;
@@ -150,36 +149,36 @@ public class GameManager : MonoBehaviour
         switch (tipoVelocidad)
         {
             case "BAJA":
-                if ((Time.realtimeSinceStartup - timeZero) > 240)
+                if ((Time.realtimeSinceStartup - timeZero) > 90)
                 {
-                    File.WriteAllText(pathToWrite, "Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString() + " // Points : " + points);
+                    File.WriteAllText(pathToWrite, "VUELO:" + points + " / Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString());
                     //Application.Quit();
                     SceneManager.LoadScene("GameMenu");
                 }
-                textMesh.text = "Tiempo restante: " + (int)(180 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
+                textMesh.text = "Tiempo restante: " + (int)(90 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
                 break;
             case "MEDIA":
-                if ((Time.realtimeSinceStartup - timeZero) > 180)
+                if ((Time.realtimeSinceStartup - timeZero) > 75)
                 {
-                    File.WriteAllText(pathToWrite, "Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString() + " // Points : " + points);
+                    File.WriteAllText(pathToWrite, "VUELO:" + points + " / Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString());
                     //Application.Quit();
                     SceneManager.LoadScene("GameMenu");
                 }
-                textMesh.text = "Tiempo restante: " + (int)(120 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
+                textMesh.text = "Tiempo restante: " + (int)(75 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
                 break;
             case "ALTA":
-                if ((Time.realtimeSinceStartup - timeZero) > 120)
+                if ((Time.realtimeSinceStartup - timeZero) > 60)
                 {
-                    File.WriteAllText(pathToWrite, "Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString() + " // Points : " + points);
+                    File.WriteAllText(pathToWrite, "VUELO:" + points + " / Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString());
                     //Application.Quit();
                     SceneManager.LoadScene("GameMenu");
                 }
                 textMesh.text = "Tiempo restante: " + (int)(60 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
                 break;
             default:
-                if ((Time.realtimeSinceStartup - timeZero) > 180)
+                if ((Time.realtimeSinceStartup - timeZero) > 60)
                 {
-                    File.WriteAllText(pathToWrite, "Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString() + " // Points : " + points);
+                    File.WriteAllText(pathToWrite, "VUELO:" + points + " / Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString());
                     //Application.Quit();
                     SceneManager.LoadScene("GameMenu");
                 }
@@ -188,18 +187,5 @@ public class GameManager : MonoBehaviour
         }
         //position[2] *= Mathf.Abs(OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RHand)[1]) * -0.05f;
         //controlador.transform.position = position;
-    }
-
-    public void WriteToFile()
-    {
-        string pathToWrite = Application.persistentDataPath + "/resultadosConTime.txt";
-
-        if (!File.Exists(pathToWrite))
-        {
-            File.WriteAllText(pathToWrite, "--RESULTADOS--\n\n");
-        }
-
-        File.AppendAllText(pathToWrite, "He terminado el ejercicio " + SceneManager.GetActiveScene().name + " con un tiempo de " + time + " segundos \n");
-        Application.Quit(); //cambiar a inicio del siguiente ejercicio
     }
 }

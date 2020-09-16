@@ -12,7 +12,6 @@ public class VerticalMovement : MonoBehaviour
     public int points;
     private float highPos, lowPos;
     private float lastValueRight, lastValueLeft;
-    private float nextActionTime = 0.0f;
     public float period = 0.05f;
     private string fileName, myFilePath, tipoAmplitud, tipoVelocidad, respuesta;
     private string[] lineas;
