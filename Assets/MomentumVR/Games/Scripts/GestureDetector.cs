@@ -43,7 +43,7 @@ public class GestureDetector : MonoBehaviour
         if(hasRecognized && !currentGesture.Equals(previousGesture))
         {
             Debug.Log("New Gesture Found : " + currentGesture.name);
-            textMeshCurrentGesture.text = "Current Gesture : " + currentGesture.name;
+            textMeshCurrentGesture.text = currentGesture.name;
             previousGesture = currentGesture;
             currentGesture.onRecognized.Invoke();
         }
