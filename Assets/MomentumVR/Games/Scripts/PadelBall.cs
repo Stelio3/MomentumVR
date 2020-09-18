@@ -18,6 +18,8 @@ public class PadelBall : MonoBehaviour
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             transform.position = iniPosition;
+
+            GameObject.Find("player").GetComponent<PadelPlayer>().Reset();
         }
     }
 }

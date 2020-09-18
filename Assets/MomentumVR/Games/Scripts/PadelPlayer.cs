@@ -9,6 +9,8 @@ public class PadelPlayer : MonoBehaviour
     float force = 18;
     bool hitting;
 
+    [SerializeField] Transform serve;
+
     // Update is called once per frame
     void Update()
     {
@@ -43,6 +45,12 @@ public class PadelPlayer : MonoBehaviour
             Vector3 dir = aimTarget.position - transform.position;
             other.GetComponent<Rigidbody>().velocity = dir.normalized * force + new Vector3(0, 12, 0);
         }
+    }
+
+    public void Reset()
+    {
+       
+        transform.position = serve.position;
     }
 }
 

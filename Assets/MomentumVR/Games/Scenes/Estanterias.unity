@@ -586,6 +586,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: 09fd826f68fbfa548b1161b5bf4e738b, type: 3}
+--- !u!1 &642884964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 144302, guid: 8c212b81fc0902b4cb9e7b348a5ab0aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 642884960}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &685837161
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,6 +742,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 887346825}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &887346827 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 144302, guid: 8c212b81fc0902b4cb9e7b348a5ab0aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 887346825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &972271650
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,6 +807,7 @@ GameObject:
   - component: {fileID: 1306033432}
   - component: {fileID: 1306033431}
   - component: {fileID: 1306033430}
+  - component: {fileID: 1306033435}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -897,6 +910,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1244, y: 531}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1306033435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306033429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 784ee2832bfa55f42a7fddf3907a7bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Left_go: {fileID: 887346827}
+  right_go: {fileID: 642884964}
 --- !u!1001 &1490114877
 PrefabInstance:
   m_ObjectHideFlags: 0
