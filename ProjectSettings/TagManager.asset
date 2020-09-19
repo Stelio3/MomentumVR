@@ -10,7 +10,6 @@ TagManager:
   - Right
   - Wall
   - Ball
-  - Out
   layers:
   - Default
   - TransparentFX
