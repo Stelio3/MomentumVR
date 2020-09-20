@@ -53,7 +53,6 @@ public class PadelPlayer : MonoBehaviour
 
     public void Reset()
     {
-       
         transform.position = serve.position;
     }
 }
