@@ -1,16 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PadelBall : MonoBehaviour
 {
+
+    private static PadelBall instance;
+    private float timeZero;
+    public float points;
+
+    [SerializeField] Text playerScoreText;
+
     Vector3 iniPosition;
+    public string hitter;
+
+    int playerScore;
+
+    public bool playing = true;
+
+
+    public static PadelBall GetInstance()
+    {
+        return instance;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         iniPosition = transform.position;
+        playerScore = 0;
+
+        timeZero = Time.realtimeSinceStartup;
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -18,6 +45,35 @@ public class PadelBall : MonoBehaviour
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             transform.position = iniPosition;
+
+            GameObject.Find("player").GetComponent<PadelPlayer>().Reset();
         }
+
+        if(playing)
+        {
+            playing = false;
+            Update(); 
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if ((other.CompareTag("Player")) && playing)
+        {
+            playerScore++;
+        }
+        playing = false;
+        Update();
+    }
+
+    void Update()
+    {
+        if ((Time.realtimeSinceStartup - timeZero) > 0)
+        {
+            Application.Quit();
+        }
+
+        playerScoreText.text = "Time: " + (int)(60 - Time.realtimeSinceStartup - timeZero) + "Score: " + playerScore;
     }
 }

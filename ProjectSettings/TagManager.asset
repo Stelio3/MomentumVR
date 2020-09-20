@@ -8,6 +8,8 @@ TagManager:
   - yellow
   - Left
   - Right
+  - Wall
+  - Ball
   layers:
   - Default
   - TransparentFX
