@@ -6,10 +6,6 @@ using UnityEngine.UI;
 public class PadelBall : MonoBehaviour
 {
 
-    private static PadelBall instance;
-    private float timeZero;
-    public float points;
-
     [SerializeField] Text playerScoreText;
 
     Vector3 iniPosition;
@@ -20,22 +16,11 @@ public class PadelBall : MonoBehaviour
     public bool playing = true;
 
 
-    public static PadelBall GetInstance()
-    {
-        return instance;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
         iniPosition = transform.position;
         playerScore = 0;
-
-        timeZero = Time.realtimeSinceStartup;
-        if (instance == null)
-        {
-            instance = this;
-        }
     }
 
 
@@ -68,12 +53,7 @@ public class PadelBall : MonoBehaviour
     }
 
     void Update()
-    {
-        if ((Time.realtimeSinceStartup - timeZero) > 0)
-        {
-            Application.Quit();
-        }
-
-        playerScoreText.text = "Time: " + (int)(60 - Time.realtimeSinceStartup - timeZero) + "Score: " + playerScore;
+    { 
+        playerScoreText.text = "Points: " + playerScore;
     }
 }
