@@ -30,14 +30,11 @@ public class PadelBall : MonoBehaviour
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             transform.position = iniPosition;
-
-            GameObject.Find("player").GetComponent<PadelPlayer>().Reset();
         }
 
         if(playing)
         {
             playing = false;
-            Update(); 
         }
 
     }
@@ -49,7 +46,6 @@ public class PadelBall : MonoBehaviour
             playerScore++;
         }
         playing = false;
-        Update();
     }
 
     void Update()
