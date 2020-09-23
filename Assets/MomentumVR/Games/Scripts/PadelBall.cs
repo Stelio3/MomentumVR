@@ -50,6 +50,6 @@ public class PadelBall : MonoBehaviour
 
     void Update()
     { 
-        playerScoreText.text = "Points: " + playerScore;
+        playerScoreText.text = "Puntos: " + playerScore;
     }
 }
