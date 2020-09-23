@@ -32,6 +32,10 @@ public class GestureDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (fingerBones.Count == 0)
+        {
+            fingerBones = new List<OVRBone>(skeleton.Bones);
+        }
         if (debugMode && Input.GetKeyDown(KeyCode.Space))
         {
             Save();
@@ -54,7 +58,7 @@ public class GestureDetector : MonoBehaviour
         Gesture g = new Gesture();
         g.name = "New Gesture";
         List<Vector3> data = new List<Vector3>();
-        foreach(var bone in fingerBones)
+        foreach (var bone in fingerBones)
         {
             data.Add(skeleton.transform.InverseTransformPoint(bone.Transform.position));
         }

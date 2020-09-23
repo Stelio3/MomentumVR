@@ -426,6 +426,39 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5423708, y: 2.6405525, z: 1}
   m_Center: {x: -0.7711854, y: 0.32027626, z: 0}
+--- !u!1 &315445233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 168962, guid: ce816f2e6abb0504092c23ed9b970dfd,
+    type: 3}
+  m_PrefabInstance: {fileID: 644003345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &315445234
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315445233}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2374767, y: 0.13648307, z: 0.38601017}
+  m_Center: {x: -0.0676747, y: -0.013257444, z: 0.039927006}
+--- !u!114 &315445235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315445233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6abc4910d1321e41bc3e94247042609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimTarget: {fileID: 463812090}
+  ball: {fileID: 1494795885}
 --- !u!1 &385755116
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +1005,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 134650, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 168962, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1090,7 +1131,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimTarget: {fileID: 463812090}
   ball: {fileID: 1494795885}
-  serve: {fileID: 1441392682}
 --- !u!1001 &708535854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1994,7 +2034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1493561690
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2657,6 +2697,39 @@ Transform:
   m_Father: {fileID: 414352964}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1696929616 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 134650, guid: ce816f2e6abb0504092c23ed9b970dfd,
+    type: 3}
+  m_PrefabInstance: {fileID: 644003345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1696929617
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696929616}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19738913, y: 0.1510266, z: 0.3738289}
+  m_Center: {x: 0.02843523, y: -0.023254216, z: -0.012992859}
+--- !u!114 &1696929618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696929616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6abc4910d1321e41bc3e94247042609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimTarget: {fileID: 463812090}
+  ball: {fileID: 1494795885}
 --- !u!1 &1770330881
 GameObject:
   m_ObjectHideFlags: 0
@@ -3093,7 +3166,7 @@ PrefabInstance:
     - target: {fileID: 6074199615011615642, guid: ca3901617ded4854a92add6f31437374,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6074199615011615642, guid: ca3901617ded4854a92add6f31437374,
         type: 3}
