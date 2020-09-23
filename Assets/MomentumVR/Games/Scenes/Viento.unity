@@ -609,7 +609,7 @@ RectTransform:
   - {fileID: 1367146131}
   - {fileID: 306627744}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1055,7 +1055,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 30
+  game: 'VIENTO:'
   prevText: 'Tiempo: '
+  points: {fileID: 306627745}
 --- !u!1001 &1378330071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1207,7 +1209,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2047369920
 PrefabInstance:

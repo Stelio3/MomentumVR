@@ -170,7 +170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4548470040626840, guid: c13335fbad29c4c459e2c93137e42312, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4548470040626840, guid: c13335fbad29c4c459e2c93137e42312, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1111,7 +1111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4908165673506896, guid: 7e2ebd9ccc7214b6abf033ced06d3c20, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4908165673506896, guid: 7e2ebd9ccc7214b6abf033ced06d3c20, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1751,8 +1751,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617a5fff8f2f6384d8a1d386f8bb0705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 30
+  time: 20
+  game: 'ESTANTERIAS:'
   prevText: 'Tiempo: '
+  points: {fileID: 574870149}
 --- !u!114 &2122985173
 MonoBehaviour:
   m_ObjectHideFlags: 0

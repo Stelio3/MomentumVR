@@ -445,7 +445,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 30
+  game: 'SIMON:'
   prevText: 'Tiempo: '
+  points: {fileID: 1572764575}
 --- !u!114 &1040435761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1469,7 +1471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshCurrentGesture: {fileID: 1572764578}
-  threshold: 0.05
+  threshold: 0.005
   skeleton: {fileID: 1572762174}
   gestures:
   - name: indice1
