@@ -15,13 +15,20 @@ public class SceneNavigation : MonoBehaviour
     public Button botonViento;
     public Button botonHandTracking;
     public Button botonEstanterias;
+    public Button botonMoto;
+    public Button botonSimon;
+    public Button botonPadel;
     public Button botonPuntuacionVuelo;
     public Button botonPuntuacionCuerda;
     public Button botonPuntuacionViento;
     public Button botonPuntuacionHandTracking;
+    public Button botonPuntuacionEstanterias;
+    public Button botonPuntuacionMoto;
+    public Button botonPuntuacionSimon;
+    public Button botonPuntuacionPadel;
     private string fileName, myFilePath, pathToWrite;
-    private string respuestaVuelo, respuestaCuerda, respuestaViento, respuestaEstanterias, respuestaHandTracking;
-    private string puntuacionVuelo = "--VUELO--", puntuacionCuerda = "--CUERDA--", puntuacionViento = "--VIENTO--", puntuacionHandTrack = "--HANDTRACKING--";
+    private string respuestaVuelo, respuestaCuerda, respuestaViento, respuestaEstanterias, respuestaHandTracking, respuestaMoto, respuestaSimon, respuestaPadel;
+    private string puntuacionVuelo = "--VUELO--", puntuacionCuerda = "--CUERDA--", puntuacionViento = "--VIENTO--", puntuacionHandTrack = "--HANDTRACKING--", puntuacionEstanterias = "--ESTANTERIAS--", puntuacionMoto = "--MOTO--", puntuacionSimon = "--SIMON--", puntuacionPadel = "--PADEL--";
     private string[] lineas;
     //private Button[] botonesActivos;
     public List<Button> botonesActivos;
@@ -46,6 +53,10 @@ public class SceneNavigation : MonoBehaviour
 
         botonesActivos = new List<Button>();
 
+        if (!File.Exists(pathToWrite))
+        {
+            File.WriteAllText(pathToWrite, "--RESULTADOS--\n\n");
+        }
         if (File.Exists(myFilePath))
         {
             lineas = File.ReadAllLines(myFilePath);
@@ -81,6 +92,21 @@ public class SceneNavigation : MonoBehaviour
                     string[] parametros = words[1].Split('/');
                     respuestaHandTracking = parametros[0];
                 }
+                else if (words[0] == "MOTO")
+                {
+                    string[] parametros = words[1].Split('/');
+                    respuestaMoto = parametros[0];
+                }
+                else if (words[0] == "SIMON")
+                {
+                    string[] parametros = words[1].Split('/');
+                    respuestaSimon = parametros[0];
+                }
+                else if (words[0] == "PADEL")
+                {
+                    string[] parametros = words[1].Split('/');
+                    respuestaPadel = parametros[0];
+                }
 
                 if (respuestaVuelo == "SI")
                 {
@@ -107,20 +133,26 @@ public class SceneNavigation : MonoBehaviour
                     botonHandTracking.gameObject.SetActive(true);
                     botonesActivos.Add(botonHandTracking);
                 }
+                if (respuestaMoto == "SI")
+                {
+                    botonMoto.gameObject.SetActive(true);
+                    botonesActivos.Add(botonMoto);
+                }
+                if (respuestaSimon == "SI")
+                {
+                    botonSimon.gameObject.SetActive(true);
+                    botonesActivos.Add(botonSimon);
+                }
+                if (respuestaPadel == "SI")
+                {
+                    botonPadel.gameObject.SetActive(true);
+                    botonesActivos.Add(botonPadel);
+                }
             }
         }
 
         MostrarPuntuaciones();
 
-    }
-    private void Update()
-    {
-        print("Quiere Funcionar!!");
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
-        {
-            Debug.Log("Funciona!!");
-        }
-        
     }
     public void ExitGame()
     {
@@ -169,6 +201,26 @@ public class SceneNavigation : MonoBehaviour
                     string[] parametros = words[1].Split('/');
                     puntuacionHandTrack = puntuacionHandTrack + "\n" + parametros[0];
                 }
+                else if (words[0] == "ESTANTERIAS")
+                {
+                    string[] parametros = words[1].Split('/');
+                    puntuacionEstanterias = puntuacionEstanterias + "\n" + parametros[0];
+                }
+                else if (words[0] == "MOTO")
+                {
+                    string[] parametros = words[1].Split('/');
+                    puntuacionMoto = puntuacionMoto + "\n" + parametros[0];
+                }
+                else if (words[0] == "SIMON")
+                {
+                    string[] parametros = words[1].Split('/');
+                    puntuacionSimon = puntuacionSimon + "\n" + parametros[0];
+                }
+                else if (words[0] == "PADEL")
+                {
+                    string[] parametros = words[1].Split('/');
+                    puntuacionPadel = puntuacionSimon + "\n" + parametros[0];
+                }
 
             }
         }
@@ -177,6 +229,10 @@ public class SceneNavigation : MonoBehaviour
         botonPuntuacionViento.GetComponentInChildren<Text>().text = puntuacionViento;
         botonPuntuacionVuelo.GetComponentInChildren<Text>().text = puntuacionVuelo;
         botonPuntuacionHandTracking.GetComponentInChildren<Text>().text = puntuacionHandTrack;
+        botonPuntuacionEstanterias.GetComponentInChildren<Text>().text = puntuacionEstanterias;
+        botonPuntuacionMoto.GetComponentInChildren<Text>().text = puntuacionMoto;
+        botonPuntuacionSimon.GetComponentInChildren<Text>().text = puntuacionSimon;
+        botonPuntuacionPadel.GetComponentInChildren<Text>().text = puntuacionPadel;
 
     }
 
@@ -193,7 +249,6 @@ public class SceneNavigation : MonoBehaviour
     public void ChangeScene(string s)
     {
         Time.timeScale = 1;
-        Debug.Log("Cambio a la escena: " + s);
         StartCoroutine(CambioEscena(s));
     }
     IEnumerator CambioEscena(string escena)

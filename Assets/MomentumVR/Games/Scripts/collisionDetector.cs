@@ -14,10 +14,10 @@ public class collisionDetector : MonoBehaviour
     {
         if (!colisioned)
         {
+            Destroy(gameObject);
             ScreenManager.Instance.points += 1;
             colisioned = true;
-            //GameManager.GetInstance().points += 10;
-            Destroy(gameObject);
+            GameManager.GetInstance().points += 10;
         }
     }
 }
