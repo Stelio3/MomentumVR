@@ -39,7 +39,7 @@ public class Simon : MonoBehaviour
             {
                 info.text = "Perfecto!";
                 currentTarget = 0;
-                pointers++;
+                pointers += sequence.Count;
                 point.text = "Puntuacion: " + pointers.ToString();
                 SetNewPosition();
             }
