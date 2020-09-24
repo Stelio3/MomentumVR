@@ -7,7 +7,8 @@ public class Simon : MonoBehaviour
 {
     public Image targetImg;
     public Text points;
-    private int pointers, a;
+    private int pointers;
+    private Sprite lastSprite;
     public Sprite[] handsSprites;
     private static int currentTarget = 0;
     private List<Sprite> sequence;
@@ -18,34 +19,37 @@ public class Simon : MonoBehaviour
     }
     public void SetNewPosition()
     {
-        a = Random.Range(0, handsSprites.Length);
-        print(a);
-        targetImg.sprite = handsSprites[a];
+        lastSprite = targetImg.sprite;
+        targetImg.sprite = handsSprites[Random.Range(0, handsSprites.Length)];
+        while(lastSprite == targetImg.sprite)
+        {
+            targetImg.sprite = handsSprites[Random.Range(0, handsSprites.Length)];
+        }
         sequence.Add(targetImg.sprite);
     }
     public void positionDetected(Sprite hand)
     {
-        if (hand == handsSprites[currentTarget])
+        Debug.Log(sequence.Count);
+        if (hand == targetImg.sprite)
         {
-            print("SIIII");
             pointers++;
-            points.text = pointers.ToString();
-            if (handsSprites[currentTarget + 1] != null)
+            points.text = "Puntuación: " + pointers.ToString();
+            if (currentTarget != sequence.Count-1)
             {
+                targetImg.sprite = sequence[currentTarget];
                 currentTarget++;
-                targetImg.sprite = handsSprites[currentTarget];
             }
             else
             {
-                SetNewPosition();
                 currentTarget = 0;
+                SetNewPosition();
             }
         }else
         {
-            print("FAILLLL");
+            points.text = "Fallo";
             sequence.Clear();
+            currentTarget = 0;
             SetNewPosition();
-            points.text = "0";
 
         }
     }
