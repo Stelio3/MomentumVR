@@ -17,7 +17,7 @@ public class ScreenManager : Singleton<ScreenManager>
     }
     private void Update()
     {
-        pointsTxt.text = "Puntuación: " + points;
+        pointsTxt.text = points + "pts";
     }
 
 }

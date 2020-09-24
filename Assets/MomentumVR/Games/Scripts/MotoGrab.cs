@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MotoGrab : OVRGrabbable
+public class MotoGrab : MonoBehaviour
 {
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (isGrabbed)
-        {
-            Moto.Instance.Grab(gameObject, true);
-        }
-        else
-        {
-            Moto.Instance.Grab(gameObject, false);
-        }
+        Moto.Instance.Grab(gameObject, true);
     }
-    
+    private void OnTriggerExit(Collider other)
+    {
+        Moto.Instance.Grab(gameObject, false);
+    }
+
 }

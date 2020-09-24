@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.IO;
 
-public class GameTime : MonoBehaviour
+public class GameTime : Singleton<GameTime>
 {
     public float time;
     public string game;

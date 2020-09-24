@@ -10,6 +10,7 @@ TagManager:
   - Right
   - Wall
   - Ball
+  - coin
   layers:
   - Default
   - TransparentFX
