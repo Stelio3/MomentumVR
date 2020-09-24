@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 [System.Serializable]
 public struct Gesture
@@ -14,8 +15,7 @@ public struct Gesture
 
 public class GestureDetector : MonoBehaviour
 {
-    [SerializeField]
-    private TextMesh textMeshCurrentGesture;
+    public Text textMeshCurrentGesture;
     public float threshold = 0.1f;
     public OVRSkeleton skeleton;
     public List<Gesture> gestures;
@@ -46,7 +46,6 @@ public class GestureDetector : MonoBehaviour
 
         if(hasRecognized && !currentGesture.Equals(previousGesture))
         {
-            Debug.Log("New Gesture Found : " + currentGesture.name);
             textMeshCurrentGesture.text = currentGesture.name;
             previousGesture = currentGesture;
             currentGesture.onRecognized.Invoke();

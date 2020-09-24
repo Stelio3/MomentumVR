@@ -1257,7 +1257,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 60
+  game: 'PADEL:'
   prevText: 'Tiempo: '
+  points: {fileID: 1183723908}
 --- !u!114 &852352451
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -57,11 +57,6 @@ public class GameManager : MonoBehaviour
         pathToWrite = "/sdcard/Download/" + "resultados.txt";
         //pathToWrite = Application.dataPath + "resultados.txt"; //oculus link
 
-        if (!File.Exists(pathToWrite))
-        {
-            File.WriteAllText(pathToWrite, "--RESULTADOS--\n\n");
-        }
-
         if (File.Exists(myFilePath))
         {
             lineas = File.ReadAllLines(myFilePath);

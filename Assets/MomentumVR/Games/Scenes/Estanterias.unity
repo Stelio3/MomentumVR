@@ -1841,8 +1841,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617a5fff8f2f6384d8a1d386f8bb0705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 30
+  time: 20
+  game: 'ESTANTERIAS:'
   prevText: 'Tiempo: '
+  points: {fileID: 574870149}
 --- !u!114 &2122985173
 MonoBehaviour:
   m_ObjectHideFlags: 0

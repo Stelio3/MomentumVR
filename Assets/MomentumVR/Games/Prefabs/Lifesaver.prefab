@@ -90,8 +90,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4521990783569168}
   - component: {fileID: -1161401159680096727}
-  - component: {fileID: 1623834685964511467}
-  - component: {fileID: 4891323232292027132}
   m_Layer: 0
   m_Name: Lifesaver
   m_TagString: Untagged
@@ -133,31 +131,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1623834685964511467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1637319330630942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4167a9dfca3b2824b8b5aa8ba4abb43a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
---- !u!114 &4891323232292027132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1637319330630942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 134de8d8d83813b49a3c4a773de5b23d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1764512032248960
 GameObject:
   m_ObjectHideFlags: 0
