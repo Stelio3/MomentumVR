@@ -1,35 +1,83 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Moto : Singleton<Moto>
 {
     private float leftRotation, rightRotation;
-
+    public Text velocity;
     public static bool leftGrab, rightGrab;
     public GameObject leftHand, rightHand;
     [SerializeField]
     float moveSpeed;
-    // Update is called once per frame
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "coin")
+        {
+            StartCoroutine(ActiveCoin(other.gameObject));
+            ScreenManager.Instance.points += 1;
+            GameTime.Instance.time += 2;
+        }
+    }
+    IEnumerator ActiveCoin(GameObject go)
+    {
+        go.SetActive(false);
+        yield return new WaitForSeconds(3f);
+        go.SetActive(true);
+    }
     void Update()
     {
-        if (rightGrab || leftGrab || Input.GetKey("a") || Input.GetKey("d"))
+        if (leftGrab)
         {
-            if ((rightGrab && !leftGrab) ||(Input.GetKey("a") && !Input.GetKey("d")))
+            leftRotation = -leftHand.transform.localRotation.x;
+        }
+        else
+        {
+            leftRotation = 0;
+        }
+        if (rightGrab)
+        {
+            rightRotation = -rightHand.transform.localRotation.x;
+        }
+        else
+        {
+            rightRotation = 0;
+        }
+        if (rightGrab || leftGrab)
+        {
+            if (rightGrab && !leftGrab)
             {
                 transform.Rotate(0, 30f * Time.deltaTime, 0, Space.Self);
             }
-            else if ((!rightGrab && leftGrab) || (!Input.GetKey("a") && Input.GetKey("d")))
+            else if (!rightGrab && leftGrab)
             {
                 transform.Rotate(0, -30f * Time.deltaTime, 0, Space.Self);
             }
-            leftRotation = leftHand.transform.localRotation.x;
-            rightRotation = rightHand.transform.localRotation.x;
 
-            moveSpeed += leftRotation * 0.1f + rightRotation * 0.1f;
+            if(moveSpeed < 15)
+            {
+                moveSpeed += leftRotation * 0.3f + rightRotation * 0.3f;
+            }else if (moveSpeed < 30)
+            {
+                moveSpeed += leftRotation * 0.1f + rightRotation * 0.1f;
+            }else if (moveSpeed < 40)
+            {
+                moveSpeed += leftRotation * -0.1f + rightRotation * -0.1f;
+            }
+            else
+            {
+                moveSpeed = 40;
+            }
+
+            velocity.text = (int)moveSpeed + "km/h";
 
             transform.localPosition += -transform.right * moveSpeed * Time.deltaTime;
-            Debug.Log("LeftRotation: " + leftRotation + " RightRotation: " + rightRotation);
+        }
+        else if(moveSpeed > 0)
+        {
+            moveSpeed -= Time.deltaTime * 0.1f;
         }
     }
     public void Grab(GameObject go, bool value)

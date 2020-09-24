@@ -999,8 +999,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784ee2832bfa55f42a7fddf3907a7bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Left_go: {fileID: 887346827}
-  right_go: {fileID: 642884964}
+  Left_go:
+  - {fileID: 887346827}
+  - {fileID: 2042480174}
+  - {fileID: 2058511070}
+  - {fileID: 1946571603833928302}
+  - {fileID: 685837161}
+  right_go:
+  - {fileID: 642884964}
+  - {fileID: 1806924977}
+  - {fileID: 1504897194}
+  - {fileID: 2824765128015976079}
+  - {fileID: 411595115}
 --- !u!1001 &1490114877
 PrefabInstance:
   m_ObjectHideFlags: 0
