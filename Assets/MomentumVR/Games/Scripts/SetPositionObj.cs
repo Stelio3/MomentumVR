@@ -8,8 +8,8 @@ public class SetPositionObj : MonoBehaviour
     public static SetPositionObj instance = null;
     private string fileName, myFilePath, pathToWrite;
     private string distance;
-    private float move = 0.5f;
-    public GameObject Left_go, right_go;
+    private float move = 0.1f;
+    public GameObject[] Left_go, right_go;
     private string[] lineas;
     private void Awake()
     {
@@ -47,13 +47,18 @@ public class SetPositionObj : MonoBehaviour
 
                 if (distance == "BAJA")
                 {
-                    Left_go.transform.position -= new Vector3(move,0,0);
-                    right_go.transform.position += new Vector3(move, 0, 0);
+                    for (int i = 0; i < Left_go.Length; i++) {
+                        Left_go[i].transform.position += new Vector3(move, 0, 0);
+                        right_go[i].transform.position -= new Vector3(move, 0, 0);
+                    }
                 }
                 else if (distance == "ALTA")
                 {
-                    Left_go.transform.position -= new Vector3(move, 0, 0);
-                    right_go.transform.position += new Vector3(move, 0, 0);
+                    for (int i = 0; i < Left_go.Length; i++)
+                    {
+                        Left_go[i].transform.position -= new Vector3(move, 0, 0);
+                        right_go[i].transform.position += new Vector3(move, 0, 0);
+                    }
                 }
             }
         }
