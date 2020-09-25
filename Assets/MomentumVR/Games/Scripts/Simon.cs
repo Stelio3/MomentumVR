@@ -5,52 +5,68 @@ using UnityEngine.UI;
 
 public class Simon : MonoBehaviour
 {
+    public GameObject gestureDetection;
     public Image targetImg;
-    public Text points;
+    public Text points, info, point;
     private int pointers;
-    private Sprite lastSprite;
+    private Sprite newSprite;
     public Sprite[] handsSprites;
     private static int currentTarget = 0;
     private List<Sprite> sequence;
     private void Start()
     {
+        points.text = "Cierra el puño para resetear movimientos";
         sequence = new List<Sprite>();
+        newSprite = targetImg.sprite;
         SetNewPosition();
     }
     public void SetNewPosition()
     {
-        lastSprite = targetImg.sprite;
-        targetImg.sprite = handsSprites[Random.Range(0, handsSprites.Length)];
-        while(lastSprite == targetImg.sprite)
-        {
-            targetImg.sprite = handsSprites[Random.Range(0, handsSprites.Length)];
-        }
-        sequence.Add(targetImg.sprite);
+        newSprite = handsSprites[Random.Range(0, handsSprites.Length)];
+        sequence.Add(newSprite);
+        StartCoroutine(ToRepeat());
     }
     public void positionDetected(Sprite hand)
     {
-        Debug.Log(sequence.Count);
-        if (hand == targetImg.sprite)
+        if (hand == sequence[currentTarget])
         {
-            pointers++;
-            points.text = "Puntuación: " + pointers.ToString();
             if (currentTarget != sequence.Count-1)
             {
-                targetImg.sprite = sequence[currentTarget];
+                info.text = "Bien!";
                 currentTarget++;
             }
             else
             {
+                info.text = "Perfecto!";
                 currentTarget = 0;
+                pointers += sequence.Count;
+                point.text = "Puntuacion: " + pointers.ToString();
                 SetNewPosition();
             }
         }else
         {
-            points.text = "Fallo";
+            info.text = "Fallo";
             sequence.Clear();
             currentTarget = 0;
             SetNewPosition();
 
         }
+    }
+    IEnumerator ToRepeat()
+    {
+        points.text = "A repetir...";
+        gestureDetection.SetActive(false);
+        targetImg.gameObject.SetActive(true);
+        for (int i = 0; i < sequence.Count; i++)
+        {
+            targetImg.sprite = sequence[i];
+            yield return new WaitForSeconds(1f);
+        }
+        points.text = "Te toca!";
+        gestureDetection.SetActive(true);
+        targetImg.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(0.5f);
+        points.text = "Secuencia: " + currentTarget + " de " + sequence.Count;
     }
 }
