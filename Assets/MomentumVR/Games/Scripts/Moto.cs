@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Moto : Singleton<Moto>
 {
+    private AudioSource audioSource;
     private float leftRotation, rightRotation;
     public Text velocity;
     public static bool leftGrab, rightGrab;
@@ -12,10 +13,15 @@ public class Moto : Singleton<Moto>
     [SerializeField]
     float moveSpeed;
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "coin")
         {
+            audioSource.Play();
             StartCoroutine(ActiveCoin(other.gameObject));
             ScreenManager.Instance.points += 1;
             GameTime.Instance.time += 2;

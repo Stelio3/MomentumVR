@@ -13,6 +13,8 @@ public class PadelPlayer : MonoBehaviour
     private string fileName, myFilePath, pathToWrite;
     private string myForce;
     private string[] lineas;
+
+    private AudioSource audioSource;
     private void Awake()
     {
         if (instance == null)
@@ -29,6 +31,7 @@ public class PadelPlayer : MonoBehaviour
     float moveSpeed;
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         fileName = "ejercicios.txt";
         myFilePath = "/sdcard/Download/" + fileName;
         pathToWrite = "/sdcard/Download/" + "resultados.txt";
@@ -65,6 +68,7 @@ public class PadelPlayer : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
+            audioSource.Play();
             Vector3 dir = aimTarget.position - transform.position;
             other.GetComponent<Rigidbody>().velocity = dir.normalized * force + new Vector3(0, 12, 0);
 
