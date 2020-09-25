@@ -13,8 +13,12 @@ public class Simon : MonoBehaviour
     public Sprite[] handsSprites;
     private static int currentTarget = 0;
     private List<Sprite> sequence;
+    private AudioSource audioSource;
+    public AudioClip[] audioClips;
+
     private void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
         points.text = "Cierra el puño para resetear movimientos";
         sequence = new List<Sprite>();
         newSprite = targetImg.sprite;
@@ -30,6 +34,7 @@ public class Simon : MonoBehaviour
     {
         if (hand == sequence[currentTarget])
         {
+            audioSource.clip = audioClips[0];
             if (currentTarget != sequence.Count-1)
             {
                 info.text = "Bien!";
@@ -45,12 +50,14 @@ public class Simon : MonoBehaviour
             }
         }else
         {
+            audioSource.clip = audioClips[1];
             info.text = "Fallo";
             sequence.Clear();
             currentTarget = 0;
             SetNewPosition();
 
         }
+        audioSource.Play();
     }
     IEnumerator ToRepeat()
     {
