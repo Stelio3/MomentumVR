@@ -6,10 +6,18 @@ public class CogerMoneda : MonoBehaviour
 {
     [SerializeField]
     private VerticalMovement verticalMov;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = gameObject.GetComponent<AudioSource>();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         verticalMov.subiendo = false;
         verticalMov.bajando = true;
+        audioSource.Play();
         Destroy(this.gameObject);
     }
     // Start is called before the first frame update
@@ -17,6 +25,7 @@ public class CogerMoneda : MonoBehaviour
     {
         verticalMov.subiendo = false;
         verticalMov.bajando = true;
+        audioSource.Play();
         Destroy(this.gameObject);
     }
 }
