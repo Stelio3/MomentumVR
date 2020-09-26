@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VerticalMovement : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class VerticalMovement : MonoBehaviour
     [SerializeField]
     private OVRPlayerController controlador;
     private string pathToWrite;
+
+    [SerializeField] Text timeGame;
+    [SerializeField] Text timeGame2;
     private float time;
     private float highPos, lowPos;
     private float lastValueRight, lastValueLeft;
@@ -38,6 +42,8 @@ public class VerticalMovement : MonoBehaviour
     void Update()
     {
         time = Time.realtimeSinceStartup - timeZero;
+        timeGame.text = "Tiempo: " + time;
+        timeGame2.text = "Tiempo: " + time;
 
         float amplitudeFrameRight = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch)[1] - lastValueRight;
         lastValueRight = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch)[1];
