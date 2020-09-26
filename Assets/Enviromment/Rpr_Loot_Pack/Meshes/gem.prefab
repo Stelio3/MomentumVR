@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5677154122893732444}
   - component: {fileID: 7884788996629847417}
   - component: {fileID: -1613148098072268981}
-  - component: {fileID: 3070111334239588340}
   - component: {fileID: 6666162015076141004}
+  - component: {fileID: 9050527737954400818}
   m_Layer: 0
   m_Name: gem
   m_TagString: Untagged
@@ -131,20 +131,6 @@ MonoBehaviour:
   m_snapOffset: {fileID: 0}
   m_grabPoints:
   - {fileID: 0}
---- !u!64 &3070111334239588340
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1862587548753234614}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 42dd7bd0519a8384ebd05d53fc59a00a, type: 3}
 --- !u!82 &6666162015076141004
 AudioSource:
   m_ObjectHideFlags: 0
@@ -156,7 +142,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a5a2f9c41d30642fe8351f8d23d0748b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -241,6 +227,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &9050527737954400818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862587548753234614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.31569105, y: 0.11861931, z: 0.18420371}
+  m_Center: {x: 0, y: -0.0016384125, z: 0}
 --- !u!1 &5548251907144093841
 GameObject:
   m_ObjectHideFlags: 0

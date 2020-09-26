@@ -9,7 +9,6 @@ public class VerticalMovement : MonoBehaviour
     private OVRPlayerController controlador;
     private string pathToWrite;
     private float time;
-    public int points;
     private float highPos, lowPos;
     private float lastValueRight, lastValueLeft;
     public float period = 0.05f;
@@ -20,13 +19,6 @@ public class VerticalMovement : MonoBehaviour
     public bool bajando;
     public bool touchingRope;
     private static VerticalMovement instance;
-
-    [SerializeField]
-    private TextMesh textMeshAmplitudeRight;
-    [SerializeField]
-    private TextMesh textMeshAmplitudeLeft;
-    [SerializeField]
-    private TextMesh textMeshJumpForce;
 
     // Start is called before the first frame update
     void Start()
@@ -53,9 +45,6 @@ public class VerticalMovement : MonoBehaviour
 
         float amplitudeFrameLeft = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch)[1] - lastValueLeft;
         lastValueLeft = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch)[1];
-
-        textMeshAmplitudeRight.text = "AmplitudRight : " + amplitudeFrameRight;
-        textMeshAmplitudeLeft.text = "AmplitudLeft : " + amplitudeFrameLeft;
 
         //controlador.JumpForce = ((Mathf.Abs(amplitudeFrameRight) + Mathf.Abs(amplitudeFrameLeft)) / 4);
 
@@ -101,8 +90,6 @@ public class VerticalMovement : MonoBehaviour
             }
             controlador.JumpForce = controlador.JumpForce * 0.01f;
         }
-
-        textMeshJumpForce.text = "Subiendo : " + subiendo + "  Bajando : " + bajando + " touchingRope: " + touchingRope;
         //controlador.JumpForce = Mathf.Abs(amplitudeFrameRight);
         
         controlador.JumpModified();

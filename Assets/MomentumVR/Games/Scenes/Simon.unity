@@ -525,7 +525,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a5a2f9c41d30642fe8351f8d23d0748b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -540,7 +540,7 @@ AudioSource:
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
-  BypassReverbZones: 1
+  BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1441,7 +1441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7be6d6e5f828b468292c0202afb887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMeshCurrentGesture: {fileID: 1331409280}
+  textMeshCurrentGesture: {fileID: 0}
   threshold: 0.03
   skeleton: {fileID: 1572762174}
   gestures:

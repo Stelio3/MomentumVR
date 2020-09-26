@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
@@ -14,14 +15,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject prefab;
     private float timeZero;
-    [SerializeField]
-    private TextMesh textMesh;
-    [SerializeField]
-    private TextMesh textMeshVelocity;
-    [SerializeField]
-    private TextMesh textMeshPosition;
-    [SerializeField]
-    private TextMesh textMeshAmplitude;
     [SerializeField]
     private OVRPlayerController controlador;
     private string pathToWrite;
@@ -83,16 +76,20 @@ public class GameManager : MonoBehaviour
         {
             switch (tipoAmplitud)
             {
-                case "BAJA":            
+                case "BAJA":
+                    GameTime.Instance.time = 200;
                     Instantiate(prefab, new Vector3(0, Random.Range(5.0f, 10.0f), i), Quaternion.identity);
                     break;
                 case "MEDIA":
+                    GameTime.Instance.time = 175;
                     Instantiate(prefab, new Vector3(0, Random.Range(5.0f, 25.0f), i), Quaternion.identity);
                     break;
                 case "ALTA":
+                    GameTime.Instance.time = 170;
                     Instantiate(prefab, new Vector3(0, Random.Range(5.0f, 40.0f), i), Quaternion.identity);
                     break;
                 default:
+                    GameTime.Instance.time = 170;
                     Instantiate(prefab, new Vector3(0, Random.Range(5.0f, 30.0f), i), Quaternion.identity);
                     break;
             }
@@ -105,11 +102,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         time = Time.realtimeSinceStartup - timeZero;
-        //textMesh.text = "Time: " + (int)((Time.realtimeSinceStartup - timeZero));
-        //textMeshVelocity.text = "Velocity : " + Mathf.Abs(OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RHand)[1]);
-        textMeshVelocity.text = "Points : " + points;
-        //textMeshPosition.text = "Posicion : " + controlador.transform.position.x + "," + controlador.transform.position.y + "," + controlador.transform.position.z;
-        textMeshPosition.text = tipoVelocidad + " / " + respuesta + "/" + tipoAmplitud + "/" + File.Exists(myFilePath);
 
         float amplitudeFrameRight = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch)[1] - lastValueRight;
         lastValueRight = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch)[1];
@@ -121,9 +113,6 @@ public class GameManager : MonoBehaviour
         controlador.JumpForce = ((Mathf.Abs(amplitudeFrameRight) + Mathf.Abs(amplitudeFrameLeft))/4);
         //controlador.JumpForce = Mathf.Abs(amplitudeFrameRight);
         controlador.JumpModified();
-
-        textMeshAmplitude.text = "Amplitud : " + amplitudeFrameRight + "Highpos: " + highPos + " Lowpos: " + lowPos;
-
 
         if (OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch)[1] > highPos)
             highPos = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch)[1];
@@ -141,45 +130,45 @@ public class GameManager : MonoBehaviour
         controlador.JumpForce = deltaTime;
         controlador.JumpModified();
 
-        switch (tipoVelocidad)
+        /*switch (tipoVelocidad)
         {
             case "BAJA":
-                if ((Time.realtimeSinceStartup - timeZero) > 90)
+                if ((Time.realtimeSinceStartup - timeZero) > 200)
                 {
                     File.WriteAllText(pathToWrite, "VUELO:" + points + " / Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString());
                     //Application.Quit();
                     SceneManager.LoadScene("GameMenu");
                 }
-                textMesh.text = "Tiempo restante: " + (int)(90 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
+                textMesh.text = "Tiempo restante: " + (int)(200 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
                 break;
             case "MEDIA":
-                if ((Time.realtimeSinceStartup - timeZero) > 75)
+                if ((Time.realtimeSinceStartup - timeZero) > 175)
                 {
                     File.WriteAllText(pathToWrite, "VUELO:" + points + " / Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString());
                     //Application.Quit();
                     SceneManager.LoadScene("GameMenu");
                 }
-                textMesh.text = "Tiempo restante: " + (int)(75 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
+                textMesh.text = "Tiempo restante: " + (int)(175 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
                 break;
             case "ALTA":
-                if ((Time.realtimeSinceStartup - timeZero) > 60)
+                if ((Time.realtimeSinceStartup - timeZero) > 170)
                 {
                     File.WriteAllText(pathToWrite, "VUELO:" + points + " / Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString());
                     //Application.Quit();
                     SceneManager.LoadScene("GameMenu");
                 }
-                textMesh.text = "Tiempo restante: " + (int)(60 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
+                textMesh.text = "Tiempo restante: " + (int)(170 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
                 break;
             default:
-                if ((Time.realtimeSinceStartup - timeZero) > 60)
+                if ((Time.realtimeSinceStartup - timeZero) > 170)
                 {
                     File.WriteAllText(pathToWrite, "VUELO:" + points + " / Amplitud máxima: " + highPos + " // Amplitud mínima: " + lowPos + " // Tiempo: " + (Time.realtimeSinceStartup - timeZero).ToString());
                     //Application.Quit();
                     SceneManager.LoadScene("GameMenu");
                 }
-                textMesh.text = "Tiempo restante: " + (int)(60 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
+                textMesh.text = "Tiempo restante: " + (int)(170 - (Time.realtimeSinceStartup - timeZero)) + " Score : " + points;
                 break;
-        }
+        }*/
         //position[2] *= Mathf.Abs(OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RHand)[1]) * -0.05f;
         //controlador.transform.position = position;
     }

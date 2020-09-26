@@ -15,7 +15,7 @@ public struct Gesture
 
 public class GestureDetector : MonoBehaviour
 {
-    public Text textMeshCurrentGesture;
+    public TextMesh textMeshCurrentGesture;
     public float threshold = 0.1f;
     public OVRSkeleton skeleton;
     public List<Gesture> gestures;

@@ -807,9 +807,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'TENIS
-
-'
+  m_Text: PADEL
 --- !u!222 &96756394
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1563,17 +1561,17 @@ MonoBehaviour:
   botonViento: {fileID: 2083262638}
   botonHandTracking: {fileID: 251580172}
   botonEstanterias: {fileID: 1667977344}
-  botonMoto: {fileID: 0}
-  botonSimon: {fileID: 0}
-  botonPadel: {fileID: 0}
+  botonMoto: {fileID: 702151219}
+  botonSimon: {fileID: 609501932}
+  botonPadel: {fileID: 504244247}
   botonPuntuacionVuelo: {fileID: 1712895295}
   botonPuntuacionCuerda: {fileID: 7542506}
   botonPuntuacionViento: {fileID: 2083944853}
   botonPuntuacionHandTracking: {fileID: 1570821475}
-  botonPuntuacionEstanterias: {fileID: 0}
-  botonPuntuacionMoto: {fileID: 0}
-  botonPuntuacionSimon: {fileID: 0}
-  botonPuntuacionPadel: {fileID: 0}
+  botonPuntuacionEstanterias: {fileID: 1937849531}
+  botonPuntuacionMoto: {fileID: 1963920972}
+  botonPuntuacionSimon: {fileID: 1847651748}
+  botonPuntuacionPadel: {fileID: 494738598}
   botonesActivos: []
 --- !u!114 &209477219
 MonoBehaviour:

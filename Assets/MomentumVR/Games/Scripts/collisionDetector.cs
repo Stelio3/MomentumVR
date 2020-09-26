@@ -8,9 +8,9 @@ public class collisionDetector : MonoBehaviour
     private bool colisioned = false;
     private AudioSource audioSource;
 
-    private void Start()
+    private void Awake()
     {
-        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -23,10 +23,9 @@ public class collisionDetector : MonoBehaviour
         if (!colisioned)
         {
             audioSource.Play();
-            Destroy(gameObject);
             ScreenManager.Instance.points += 1;
             colisioned = true;
-            GameManager.GetInstance().points += 10;
+            Destroy(gameObject);
         }
     }
 }

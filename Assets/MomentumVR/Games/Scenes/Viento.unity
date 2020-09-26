@@ -899,7 +899,7 @@ MonoBehaviour:
   - {fileID: 1429923014}
   - {fileID: 390610322}
   spawnObjects:
-  - {fileID: 1811662691901812, guid: a53dc7c14dd524d869aff830ceb6addb, type: 3}
+  - {fileID: 1178179015817066, guid: 2942a9241566d9f49916c618e9dc95a7, type: 3}
   - {fileID: 1878976330372524, guid: 2b90d0c38e99d41acaa02470d023066d, type: 3}
   - {fileID: 1487092437418672, guid: 166ca20d8679849429412da6990e81a3, type: 3}
 --- !u!1001 &1252985536
