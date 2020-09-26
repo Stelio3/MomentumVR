@@ -152,7 +152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1862587548753234614, guid: b3f1031072a383b408c54a56c0bd9f00, type: 3}
-  textMesh: {fileID: 1682432745}
   controlador: {fileID: 537012390}
   points: 0
   period: 0.05
@@ -2565,20 +2564,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc0139cae28a204b94ed74adadf8fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1815223585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1815223583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90bb52ca51f911a40b588ce673664868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointsTxt: {fileID: 0}
-  points: 0
 --- !u!1 &1829988672
 GameObject:
   m_ObjectHideFlags: 0
