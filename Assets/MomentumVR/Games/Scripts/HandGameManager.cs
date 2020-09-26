@@ -3,6 +3,7 @@ using System.Collections;
 using System.Globalization;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.IO;
 using UnityEngine.SceneManagement;
 
@@ -14,7 +15,7 @@ public class HandGameManager : MonoBehaviour
     [SerializeField]
     private TextMesh textMeshTime;
     [SerializeField]
-    private TextMesh currentGesture;
+    private Text currentGesture;
     [SerializeField]
     private TextMesh nivelTextMesh;
     public GameObject balon;
