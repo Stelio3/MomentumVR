@@ -7,28 +7,13 @@ public class Spawner : MonoBehaviour
     public float timeSpawn;
     [SerializeField]
     Transform[] spawnPositions;
-
     public GameObject[] spawnObjects;
-
-    Coroutine rutina;
-    private void OnEnable()
+    private void Start()
     {
-        StartCoroutine(StartSpawning());
+        InvokeRepeating("Spawning", timeSpawn, timeSpawn);
     }
-    private void OnDisable()
+    public void Spawning()
     {
-        StopSpawning();
-    }
-    IEnumerator StartSpawning()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(timeSpawn);
-            Instantiate(spawnObjects[Random.Range(0, spawnObjects.Length)], spawnPositions[Random.Range(0, spawnPositions.Length)]);
-        }
-    }
-    public void StopSpawning()
-    {
-        StopAllCoroutines();
+        Instantiate(spawnObjects[Random.Range(0, spawnObjects.Length)], spawnPositions[Random.Range(0, spawnPositions.Length)]);
     }
 }
