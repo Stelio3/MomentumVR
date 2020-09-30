@@ -9,10 +9,6 @@ public class VerticalMovement : MonoBehaviour
     [SerializeField]
     private OVRPlayerController controlador;
     private string pathToWrite;
-
-    [SerializeField] Text timeGame;
-    [SerializeField] Text timeGame2;
-    private float time;
     private float highPos, lowPos;
     private float lastValueRight, lastValueLeft;
     public float period = 0.05f;
@@ -27,8 +23,6 @@ public class VerticalMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        time = Time.realtimeSinceStartup;
-        timeZero = Time.realtimeSinceStartup;
         bajando = false;
         subiendo = true;
         touchingRope = false;
@@ -41,9 +35,6 @@ public class VerticalMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time = Time.realtimeSinceStartup - timeZero;
-        timeGame.text = "Tiempo: " + time;
-        timeGame2.text = "Tiempo: " + time;
 
         float amplitudeFrameRight = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch)[1] - lastValueRight;
         lastValueRight = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch)[1];

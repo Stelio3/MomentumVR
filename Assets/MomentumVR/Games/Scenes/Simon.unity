@@ -1441,7 +1441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7be6d6e5f828b468292c0202afb887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMeshCurrentGesture: {fileID: 0}
+  textMeshCurrentGesture: {fileID: 1331409280}
   threshold: 0.03
   skeleton: {fileID: 1572762174}
   gestures:

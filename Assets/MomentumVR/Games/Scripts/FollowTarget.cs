@@ -7,22 +7,10 @@ public class FollowTarget : MonoBehaviour
 {
     private Vector3 direction, velocity;
     Vector3 target;
-    public static FollowTarget instance = null;
     private string fileName, myFilePath, pathToWrite;
     private string amplitud, speed;
     private float range = 0;
     private string[] lineas;
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
 
     [SerializeField]
     float moveSpeed;
